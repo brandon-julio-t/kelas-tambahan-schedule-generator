@@ -30,42 +30,10 @@
           <app-button @click="handleDecrementRemoveIdx"><app-minus class="w-6 mx-auto"></app-minus></app-button>
         </div>
 
-        <app-button @click="handleRemove()" class="text-red-600 border-red-600 hover:text-black focus:text-black1. Inisial: Streaming/Minor/Free Elective
-Streaming:
-Prioritas 1 ->
-Prioritas 2 ->
-Prioritas 3 ->
-
-Minor:
-
-2. Inisial: Streaming/Minor/Free Elective
-Streaming:
-Prioritas 1 ->
-Prioritas 2 ->
-Prioritas 3 ->
-
-Minor:
-
-3."
+        <app-button @click="handleRemove()" class="text-red-600 border-red-600 hover:text-black focus:text-black"
           ><app-x class="w-6 inline"></app-x> Remove Selected</app-button
         >
-        <app-button @click="handleClearAll()" class="text-red-600 border-red-600 hover:text-black focus:text-black1. Inisial: Streaming/Minor/Free Elective
-Streaming:
-Prioritas 1 ->
-Prioritas 2 ->
-Prioritas 3 ->
-
-Minor:
-
-2. Inisial: Streaming/Minor/Free Elective
-Streaming:
-Prioritas 1 ->
-Prioritas 2 ->
-Prioritas 3 ->
-
-Minor:
-
-3."
+        <app-button @click="handleClearAll()" class="text-red-600 border-red-600 hover:text-black focus:text-black"
           ><app-trash class="w-6 inline"></app-trash> Clear All</app-button
         >
       </div>
@@ -135,7 +103,9 @@ export default defineComponent({
       const fields = [date, assistant, subject, time];
       const areAllFilled = fields.every(field => field.value.length > 0);
 
-      if (areAllFilled) {
+      if (!assistant.value.match(/[A-Z][A-Z][0-9][0-9]-[0-9]/g)) {
+        alert('Minta di-eval?');
+      } else if (areAllFilled) {
         data.value.splice(0, 0, {
           assistant: assistant.value,
           subject: subject.value,
