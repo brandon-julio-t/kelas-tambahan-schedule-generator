@@ -103,9 +103,11 @@ export default defineComponent({
       const fields = [date, assistant, subject, time];
       const areAllFilled = fields.every(field => field.value.length > 0);
 
-      if (!assistant.value.match(/[A-Z][A-Z][0-9][0-9]-[0-9]/g)) {
-        alert('Minta di-eval?');
-      } else if (areAllFilled) {
+      if (!areAllFilled) {
+        alert('Please fill all fields.');
+      } else if (!assistant.value.match(/[A-Z][A-Z][0-9][0-9]-[0-9]/g)) {
+        alert('Name + Generation is wrong. Minta di-eval?');
+      } else {
         data.value.splice(0, 0, {
           assistant: assistant.value,
           subject: subject.value,
@@ -115,8 +117,6 @@ export default defineComponent({
 
         saveData();
         fields.forEach(field => (field.value = ''));
-      } else {
-        alert('Please fill all fields.');
       }
     }
 
