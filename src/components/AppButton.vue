@@ -1,5 +1,7 @@
 <template>
-  <button class="border hover:border-black focus:border-black focus:outline-none py-2 px-4 rounded">
+  <button
+    class="border hover:border-black focus:border-black active:border-white active:text-white active:bg-black focus:outline-none py-2 px-4 rounded"
+  >
     <slot></slot>
   </button>
 </template>

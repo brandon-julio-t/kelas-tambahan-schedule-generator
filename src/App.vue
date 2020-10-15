@@ -1,5 +1,5 @@
 <template>
-  <main class="container mx-auto px-4">
+  <main class="container mx-auto px-4 text-center mt-4">
     <h1 class="mb-8 font-bold text-3xl">Schedule Generator</h1>
 
     <form action="#" @submit.prevent="handleSubmit()">
@@ -13,17 +13,19 @@
         </div>
       </div>
 
-      <app-button class="my-8 bg-blue-500 text-white border-0" type="submit"
+      <app-button
+        class="my-8 bg-blue-500 text-white border-0 w-full active:bg-white active:text-blue-500 active:border-blue-500"
+        type="submit"
         ><app-plus class="w-6 inline"></app-plus> Generate</app-button
       >
     </form>
 
-    <div v-if="data.length > 0">
+    <div v-show="data.length > 0">
       <h2 class="my-8 font-bold text-3xl">Output</h2>
       <pre class="select-all"><code>{{ output }}</code></pre>
 
       <div class="grid grid-rows-4 gap-4 my-8">
-        <input v-model="removeIdx" class="text-center bg-transparent text-4xl" type="text" tabindex="-1" />
+        <input v-model="removeIdx" class="text-center bg-transparent text-4xl" type="text" tabindex="-1" disabled />
 
         <div class="grid grid-cols-2 gap-4">
           <app-button @click="handleIncrementRemoveIdx"><app-plus class="w-6 mx-auto"></app-plus></app-button>
@@ -42,8 +44,6 @@
 </template>
 
 <script lang="ts">
-import './assets/tailwind.css';
-
 import { computed, defineComponent, onMounted, reactive, ref, toRefs, watch } from 'vue';
 
 import AppButton from './components/AppButton.vue';
